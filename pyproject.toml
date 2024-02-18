@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "scotus-eyecite"
+version = "0.1.0"
+description = ""
+authors = ["Chris Brew <brewc@dy6nm2ng4q.legal.regn.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+eyecite = "^2.6.0"
+datasets = "^2.17.0"
+fastparquet = "^2024.2.0"
+jupyter = "^1.0.0"
+streamlit = "^1.31.1"
+pandas = "^2.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
