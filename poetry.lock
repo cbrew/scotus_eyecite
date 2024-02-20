@@ -136,13 +136,13 @@ doc = ["docutils", "jinja2", "myst-parser", "numpydoc", "pillow (>=9,<10)", "pyd
 
 [[package]]
 name = "anyio"
-version = "4.2.0"
+version = "4.3.0"
 description = "High level compatibility layer for multiple asynchronous event loop implementations"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "anyio-4.2.0-py3-none-any.whl", hash = "sha256:745843b39e829e108e518c489b31dc757de7d2131d53fac32bd8df268227bfee"},
-    {file = "anyio-4.2.0.tar.gz", hash = "sha256:e1875bb4b4e2de1669f4bc7869b6d3f54231cdced71605e6e64c9be77e3be50f"},
+    {file = "anyio-4.3.0-py3-none-any.whl", hash = "sha256:048e05d0f6caeed70d731f3db756d35dcc1f35747c8c403364a8332c630441b8"},
+    {file = "anyio-4.3.0.tar.gz", hash = "sha256:f75253795a87df48568485fd18cdd2a3fa5c4f7c5be8e5e36637733fce06fed6"},
 ]
 
 [package.dependencies]
@@ -690,13 +690,13 @@ dev = ["black (==22.3.0)", "hypothesis", "numpy", "pytest (>=5.30)", "pytest-xdi
 
 [[package]]
 name = "datasets"
-version = "2.17.0"
+version = "2.17.1"
 description = "HuggingFace community-driven open-source library of datasets"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "datasets-2.17.0-py3-none-any.whl", hash = "sha256:1479667383d002c2b4a4fc6ac0fb99a7f8e7e440f348991ae7343837f9fc84db"},
-    {file = "datasets-2.17.0.tar.gz", hash = "sha256:81e32e0393a8ca398800223992bfd6222f8a830a6e6aaf3b41b887646f771a86"},
+    {file = "datasets-2.17.1-py3-none-any.whl", hash = "sha256:346974daf2fe9c14ddb35646896b2308b95e7dc27709d1a6e25273573b140cf8"},
+    {file = "datasets-2.17.1.tar.gz", hash = "sha256:66ec24077807f374f379b62ab0256c4dcb7c38a57ff1529a22993e8d95f2f9f1"},
 ]
 
 [package.dependencies]
@@ -2146,13 +2146,13 @@ test = ["flaky", "ipykernel (>=6.19.3)", "ipython", "ipywidgets", "nbconvert (>=
 
 [[package]]
 name = "nbconvert"
-version = "7.16.0"
-description = "Converting Jupyter Notebooks"
+version = "7.16.1"
+description = "Converting Jupyter Notebooks (.ipynb files) to other formats.  Output formats include asciidoc, html, latex, markdown, pdf, py, rst, script.  nbconvert can be used both as a Python library (`import nbconvert`) or as a command line tool (invoked as `jupyter nbconvert ...`)."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "nbconvert-7.16.0-py3-none-any.whl", hash = "sha256:ad3dc865ea6e2768d31b7eb6c7ab3be014927216a5ece3ef276748dd809054c7"},
-    {file = "nbconvert-7.16.0.tar.gz", hash = "sha256:813e6553796362489ae572e39ba1bff978536192fb518e10826b0e8cadf03ec8"},
+    {file = "nbconvert-7.16.1-py3-none-any.whl", hash = "sha256:3188727dffadfdc9c6a1c7250729063d7bc78b355ad7aa023138afa030d1cd07"},
+    {file = "nbconvert-7.16.1.tar.gz", hash = "sha256:e79e6a074f49ba3ed29428ed86487bf51509d9aab613bd8522ac08f6d28fd7fd"},
 ]
 
 [package.dependencies]
@@ -3529,6 +3529,17 @@ doc = ["sphinx", "sphinx_rtd_theme"]
 test = ["flake8", "isort", "pytest"]
 
 [[package]]
+name = "tinyhtml"
+version = "1.2.0"
+description = "A tiny library to safely render compact HTML5 from Python expressions."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tinyhtml-1.2.0-py3-none-any.whl", hash = "sha256:9cccd4c54479090f4e016494a0a284001c382654d60be4748c72c59480719cd1"},
+    {file = "tinyhtml-1.2.0.tar.gz", hash = "sha256:e7ee376d83a552f884994688dde364710a8cb0f5e5c858587e7beb0b1f7c0679"},
+]
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -4062,4 +4073,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4.0"
-content-hash = "7c960959762db384d64c3988acc023be9b0d5d9ef3d470c5ae421e0847017cb0"
+content-hash = "d5cb18e66dcbf0a7626ead9ccb53f1cf421dc1823475b9ff931a62c31e36bd89"
