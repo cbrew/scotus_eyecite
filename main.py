@@ -39,22 +39,45 @@ def guess_case_name(text):
     line = text.splitlines()[0]
     return " ".join(line.strip().split()[0:3])
 
+def e_group(values):
+    r = []
+    for value in values:
+        (start,end) = value.span()
+        text = value.token.data
+        groups = value.groups
+        groups['text'] = text
+        groups["start"] = start
+        groups['end'] = end
+        r.append(groups)
+    return r
 
-def eyecite_graph(text,citations):
-    return []
 
+def eyecite_groups(text,citations):
+    resolved = eyecite.resolve_citations(citations)
+    result = [e_group(values) for key,values in resolved.items()]
+
+    return result
+
+
+def eyecite_citations(citations):
+    """
+
+    :param citations: all the citations found, including ones that are just '$'
+    :return: dictionary representation of all the substantive citations.
+    """
+    return e_group([c for c in citations if not isinstance(c,eyecite.models.UnknownCitation)])
 
 
 def add_citations(example):
     example["case_id"] = guess_case_name(example["text"])
     try:
         citations = eyecite.get_citations(example["text"])
-        spans = [citation.span() for citation in citations]
-        example["spans"] = json.dumps(spans)
-        example["graph"] = eyecite_graph(example["text"])
+
+        example["spans"] = json.dumps(eyecite_citations(citations))
+        example["groups"] = json.dumps(eyecite_groups(example["text"],citations))
     except TypeError as e:
         print(e, example["case_id"])
-        example["graph"] = "[]"
+        example["groups"] = "[]"
         example["spans"] = "[]"
     return example
 

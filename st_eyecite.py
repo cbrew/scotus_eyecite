@@ -13,12 +13,10 @@ st.title(row['case_id'])
 
 text = row['text']
 spans = json.loads(row['spans'])
+groups = json.loads(row['groups'])
 
+# st.json(interleave(text,spans))
 
-
-
-
-
-st.json(interleave(text,spans))
+st.json([group for group in groups if len(group) > 1])
 
 
