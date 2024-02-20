@@ -1,8 +1,3 @@
-import re
-
-
-
-
 
 def _paragraphs(text):
     start = 0
@@ -39,9 +34,9 @@ def _paragraphs(text):
         end = start + len(para)
         yield para, start, end
 
-
 def paragraphs(text):
         return list(_paragraphs(text))
+
 
 def interleave(text,spans):
     paras = []

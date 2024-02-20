@@ -40,30 +40,22 @@ def guess_case_name(text):
     return " ".join(line.strip().split()[0:3])
 
 
-def eyecite_graph(text):
-    citations = eyecite.get_citations(text)
-    resolved = eyecite.resolve_citations(citations)
-    links = [
-        dict(
-            target_text=text[target[0] : target[1]],
-            target_span=target,
-            source_span=text[source[0] : source[1]],
-            source=source,
-        )
-        for target, source in span_pairs(resolved)
-        if target != source
-    ]
-    return json.dumps(links, sort_keys=True, indent=4)
+def eyecite_graph(text,citations):
+    return []
+
 
 
 def add_citations(example):
     example["case_id"] = guess_case_name(example["text"])
     try:
-        example["spans"] = json.dumps([citation.span() for citation in eyecite.get_citations(example["text"])])
+        citations = eyecite.get_citations(example["text"])
+        spans = [citation.span() for citation in citations]
+        example["spans"] = json.dumps(spans)
         example["graph"] = eyecite_graph(example["text"])
     except TypeError as e:
         print(e, example["case_id"])
         example["graph"] = "[]"
+        example["spans"] = "[]"
     return example
 
 
