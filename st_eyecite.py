@@ -18,7 +18,7 @@ fulltext = row['text']
 spans = json.loads(row['spans'])
 groups = json.loads(row['groups'])
 
-html_tab,span_tab,group_tab = st.tabs(["HTML","SPANS","GROUPS"])
+html_tab,span_tab,group_tab,spans_tab2 = st.tabs(["HTML","SPANS","GROUPS", "SPANS2"])
 
 with html_tab:
     components.html(present(fulltext,spans),height=1200,scrolling=True)
@@ -28,6 +28,8 @@ with group_tab:
     for group in groups:
         if len(group) > 1:
             st.table(group)
+with spans_tab2:
+    st.table(spans)
 
 
 
