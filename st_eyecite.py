@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import json
-from yattag import Doc
 import streamlit.components.v1 as components
 
 from scotus_eyecite.interleave import interleave,present
