@@ -45,6 +45,7 @@ def e_group(values):
         (start,end) = value.span()
         text = value.token.data
         groups = value.groups
+        groups['type'] = type(value).__name__
         groups['text'] = text
         groups["start"] = start
         groups['end'] = end
@@ -65,16 +66,25 @@ def eyecite_citations(citations):
     :param citations: all the citations found, including ones that are just '$'
     :return: dictionary representation of all the substantive citations.
     """
-    return e_group([c for c in citations if not isinstance(c,eyecite.models.UnknownCitation)])
+    return e_group(citations)
 
 
 def add_citations(example):
     example["case_id"] = guess_case_name(example["text"])
     try:
         citations = eyecite.get_citations(example["text"])
+        resolved = eyecite.resolve_citations(citations)
+        s1 = {c.span() for c in citations}
+        s2 = {c.span() for group in resolved.values() for c in group}
+        s1only = s1.difference(s2)
+        s2only = s2.difference(s1)
+        r1 = [citation for citation in citations if citation.span() in s1only]
+        r2 = [citation for group in resolved.values() for citation in group if citation.span() in s2only]
 
         example["spans"] = json.dumps(eyecite_citations(citations))
         example["groups"] = json.dumps(eyecite_groups(example["text"],citations))
+        example['s1only'] = json.dumps(e_group(r1))
+        example['s2only'] = json.dumps(e_group(r2))
     except TypeError as e:
         print(e, example["case_id"])
         example["groups"] = "[]"

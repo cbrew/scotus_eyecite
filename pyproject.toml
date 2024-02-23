@@ -15,6 +15,7 @@ streamlit = "^1.31.1"
 pandas = "^2.2.0"
 watchdog = "^4.0.0"
 tinyhtml = "^1.2.0"
+yattag = "^1.15.2"
 
 
 [build-system]

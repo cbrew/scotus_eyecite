@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
-from scotus_eyecite.interleave import interleave
 import json
-from tinyhtml import html,h
+from yattag import Doc
+import streamlit.components.v1 as components
+
+from scotus_eyecite.interleave import interleave,present
+
 st.set_page_config(layout="wide")
 
 
@@ -11,12 +14,26 @@ index = st.slider("Case",min_value=0,max_value=df.shape[0]-1)
 row = df.iloc[index]
 st.title(row['case_id'])
 
-text = row['text']
+fulltext = row['text']
 spans = json.loads(row['spans'])
 groups = json.loads(row['groups'])
 
-# st.json(interleave(text,spans))
+html_tab,span_tab,group_tab = st.tabs(["HTML","SPANS","GROUPS"])
 
-st.json([group for group in groups if len(group) > 1])
+with html_tab:
+    components.html(present(fulltext,spans),height=1200,scrolling=True)
+with span_tab:
+    st.table(interleave(fulltext,spans))
+with group_tab:
+    for group in groups:
+        if len(group) > 1:
+            st.table(group)
+
+
+
+
+
+
+
 
 
