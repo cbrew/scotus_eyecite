@@ -16,6 +16,11 @@ pandas = "^2.2.0"
 watchdog = "^4.0.0"
 tinyhtml = "^1.2.0"
 yattag = "^1.15.2"
+pylint = "^3.0.3"
+spacy = "^3.7.4"
+en-core-web-md = {url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1.tar.gz"}
+spacy-streamlit = "^1.0.6"
+dill = "^0.3.8"
 
 
 [build-system]

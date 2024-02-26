@@ -1,7 +1,6 @@
 from yattag import Doc
 
-def paragraphs(text):
-    paras = []
+def paras(text):
     chunk = []
     start = 0
     state = "starting"
@@ -33,16 +32,6 @@ def paragraphs(text):
     if chunk:
         tx = "".join(chunk)
         yield dict(text=tx, start=start, end=len(text), type="whitespace" if tx.isspace() else "nonwhitespace")
-
-
-
-
-
-
-
-
-
-
 
 
 def present(fulltext,spans):
